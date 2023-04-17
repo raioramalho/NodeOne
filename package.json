@@ -4,18 +4,25 @@
   "description": "Default Backend prático e completo, com ferramentas e direcionado com ajustes para melhor performace produtividade.",
   "main": "sever.js",
   "scripts": {
-    "start": "node build/server.js",
+    "start:prod": "node build/server.js",
     "start:dev": "tsx watch src/server.ts",
+    "start:test": "",
     "build": "tsup src --out-dir build"
   },
-  "author": "Alan Ramalho & Hanz Kassik",
+  "author": "Hanz Kassik & Alan Ramalho",
   "license": "MIT",
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
+    "@types/node": "^18.15.11",
     "@typescript-eslint/eslint-plugin": "^5.59.0",
     "@typescript-eslint/parser": "^5.59.0",
-    "class-validator": "^0.14.0",
     "eslint": "^8.38.0",
+    "jest": "^29.5.0",
     "tsup": "^6.7.0",
     "tsx": "^3.12.6"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "http-status-codes": "^2.2.0"
   }
 }
