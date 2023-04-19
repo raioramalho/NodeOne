@@ -1,5 +1,5 @@
 {
-  "name": "fastback",
+  "name": "NodeOne",
   "version": "1.0.0",
   "description": "Default Backend prático e completo, com ferramentas e direcionado com ajustes para melhor performace produtividade.",
   "main": "sever.js",
