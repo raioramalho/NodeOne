@@ -1,4 +1,4 @@
-export class FastError extends Error {
+export class CustomError extends Error {
 	code: number;
 	name: string;
 	constructor(name: string, code: number, message: string, ) {
