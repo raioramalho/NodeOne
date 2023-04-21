@@ -1,2 +1,2 @@
 console.clear();
-console.log('❤️ Best Framework ❤️');
+console.log('☕ - NodeOne is Running!');

@@ -6,8 +6,8 @@ const prisma = new PrismaClient();
 type ModelName = 'Example' | 'ModelTwo'
 
 export class Repository{
-	constructor(private readonly model: ModelName) {}
-
+	constructor(public readonly model: ModelName) {}
+	// -Implemente suas novas classes de repositorio aqui!!
 	async findMany(includes?: object) {
 		// -@ts-ignore
 		return await prisma[this.model.toLocaleLowerCase()].findMany({
