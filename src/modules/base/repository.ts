@@ -3,7 +3,7 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 //adicione seus models aqui!
-type ModelName = 'ModelOne' | 'ModelTwo'
+type ModelName = 'Example' | 'ModelTwo'
 
 export class Repository{
 	constructor(private readonly model: ModelName) {}
@@ -71,8 +71,3 @@ export class Repository{
 		});
 	}
 }
-
-
-
-
-
