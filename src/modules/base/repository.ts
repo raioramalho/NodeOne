@@ -50,14 +50,14 @@ export class Repository{
 		});
 	}
 
-	async deleteById(id:number, includes?: object) {
+	async deleteById(id: number, includes?: object) {
 		// -@ts-ignore
 		return await prisma[this.model.toLocaleLowerCase()].delete({
 			where: { id },
 		});
 	}
 
-	async deleteByEmail(email:string, includes?: object) {
+	async deleteByEmail(email: string, includes?: object) {
 		// -@ts-ignore
 		return await prisma[this.model.toLocaleLowerCase()].delete({
 			where: { email },

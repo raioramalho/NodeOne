@@ -1,5 +1,6 @@
 import { describe, expect, test } from 'vitest';
 import { hashHelper } from './hash.tool';
+
 describe('Bateria de testes para o hashtool', () => {
 	test('test', async () => {
 		const clean_password = '1q2w3e';

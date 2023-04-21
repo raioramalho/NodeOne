@@ -5,8 +5,8 @@ class ExampleController {
 	async findById(request:  any, response: any) {
 		const { id } = request.params;
 		try {
-			const example = await exampleService.findById(+id);
-		} catch (error: any  | CustomError) {
+			return await exampleService.findById(+id);
+		} catch (error: any | CustomError) {
 			response.status(error?.code).send({ message: error?.message });
 		}
 	}
