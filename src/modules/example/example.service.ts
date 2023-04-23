@@ -1,6 +1,7 @@
 import { PrismaClient } from '@prisma/client';
-import { CustomError } from '../../helpers/errors/custom.error';
 import { Repository } from '../base/repository';
+import { errorList } from '../../helpers/errors/list.error';
+import { ResponseError } from '../../helpers/errors/response.error';
 
 const prisma = new PrismaClient();
 class TestRepository extends Repository {
@@ -15,11 +16,11 @@ class ExampleService {
 		try {
 			const verify = await this.Repository.findById(id);
 			if (verify) {
-				throw new CustomError('NotFound Error',404,'Item not found');
+				throw new ResponseError(errorList.Not_Found_Error);
 			}
 			return verify;
 		} catch (error) {
-			throw new CustomError('Internal Error',500,'Internal server error');
+			throw new ResponseError(errorList.Internal_Server_Error);
 		}
 	}
 
@@ -27,10 +28,10 @@ class ExampleService {
 		try {
 			const removelAll = await this.Repository.deleteMany();
 			if (!removelAll) {
-				throw new CustomError('No data for delete', 403, 'No data for delete');
+				throw new ResponseError(errorList.Not_Found_Error);
 			}
 		} catch (error) {
-			throw new CustomError('Internal Error', 500,'Internal server error');
+			throw new ResponseError(errorList.Internal_Server_Error);
 		}
 	}
 }
