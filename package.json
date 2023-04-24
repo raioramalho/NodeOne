@@ -5,7 +5,9 @@
   "main": "sever.js",
   "scripts": {
     "prod": "node build/server.js",
+    "prod:migrate": "npx prisma migrate deploy",
     "dev": "tsx watch src/server.ts",
+    "dev:migrate": "npx prisma migrate dev",
     "test": "vitest run",
     "test:watch": "vitest",
     "build": "tsup src --out-dir build"
