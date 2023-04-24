@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client';
+import { Example, Prisma, PrismaClient } from '@prisma/client';
 import { Repository } from '../base/repository';
 import { errorList } from '../../helpers/errors/list.error';
 import { ResponseError } from '../../helpers/errors/response.error';
@@ -14,7 +14,21 @@ class TestRepository extends Repository {
 
 class ExampleService {
 	Repository = new TestRepository('Example');
-	async findById(id: number): Promise<any> {
+
+	async create(data: Prisma.ExampleCreateInput): Promise<Example> {
+		try {
+			const verify = await this.Repository.findByEmail(data.email);
+			if (!verify) {
+				throw new ResponseError(errorList.Already_Exists);
+			}
+			const example = await this.Repository.create(data);
+			return example;
+		} catch (error) {
+			throw new ResponseError(errorList.Internal_Server_Error);
+		}
+	}
+
+	async findById(id: number): Promise<Example> {
 		try {
 			const verify = await this.Repository.findById(id);
 			if (verify) {
@@ -26,12 +40,13 @@ class ExampleService {
 		}
 	}
 
-	async deleteMany(): Promise<any> {
+	async deleteMany(): Promise<Example[]> {
 		try {
 			const removelAll = await this.Repository.deleteMany();
 			if (!removelAll) {
 				throw new ResponseError(errorList.Not_Found_Error);
 			}
+			return removelAll;
 		} catch (error) {
 			throw new ResponseError(errorList.Internal_Server_Error);
 		}
