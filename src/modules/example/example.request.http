@@ -1,0 +1,11 @@
+### POST to /example
+POST http://localhost:3000/example
+Content-Type: application/json
+
+{
+  "email": "ramalho.sit.br@gmail.com"
+}
+
+### GET to /example/:id
+GET http://localhost:3000/example/1
+Content-Type: application/json

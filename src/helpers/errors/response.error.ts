@@ -3,10 +3,10 @@ export class ResponseError extends Error {
 	code: number;
 	message: string;
 
-	constructor(errorObj: {name: string, code: number, message: string}) {
-		super(errorObj.message);
-		this.name = errorObj.name,
-		this.code = errorObj.code,
-		this.message = errorObj.message;
+	constructor(error: any) {
+		super(error.message);
+		this.name = error.name;
+		this.code = error.code;
+		this.message = error.message;
 	}
 }

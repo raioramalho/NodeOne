@@ -15,20 +15,20 @@ class TestRepository extends Repository {
 class ExampleService {
 	Repository = new TestRepository('Example');
 
-	async create(data: Prisma.ExampleCreateInput): Promise<Example> {
+	async create(data: any): Promise<Example> {
 		try {
 			const verify = await this.Repository.findByEmail(data.email);
-			if (!verify) {
+			if (verify) {
 				throw new ResponseError(errorList.Already_Exists);
 			}
 			const example = await this.Repository.create(data);
 			return example;
 		} catch (error) {
-			throw new ResponseError(errorList.Internal_Server_Error);
+			throw new ResponseError(error);
 		}
 	}
 
-	async findById(id: number): Promise<Example> {
+	async findById(id: number): Promise<any> {
 		try {
 			const verify = await this.Repository.findById(id);
 			if (verify) {
@@ -36,11 +36,11 @@ class ExampleService {
 			}
 			return verify;
 		} catch (error) {
-			throw new ResponseError(errorList.Internal_Server_Error);
+			throw new ResponseError(error);
 		}
 	}
 
-	async deleteMany(): Promise<Example[]> {
+	async deleteById(): Promise<Example[]> {
 		try {
 			const removelAll = await this.Repository.deleteMany();
 			if (!removelAll) {
@@ -48,7 +48,7 @@ class ExampleService {
 			}
 			return removelAll;
 		} catch (error) {
-			throw new ResponseError(errorList.Internal_Server_Error);
+			throw new ResponseError(error);
 		}
 	}
 }

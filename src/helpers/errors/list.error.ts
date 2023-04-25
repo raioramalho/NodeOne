@@ -13,7 +13,7 @@ class ErrorList {
 	};
 	Not_Found_Error = {
 		name: 'Not_Found_Error',
-		code: 404,
+		code: HttpStatus.NOT_FOUND,
 		message: 'No data found!'
 	};
 }
