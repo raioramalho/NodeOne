@@ -4,6 +4,7 @@ import { errorList } from '../../helpers/errors/list.error';
 import { ResponseError } from '../../helpers/errors/response.error';
 
 const prisma = new PrismaClient();
+// Pequeno exemplo de implementação de classe!
 class TestRepository extends Repository {
 	async deleteMany() {
 		//eslint-disable-next-line @typescript-eslint/ban-ts-comment
