@@ -4,5 +4,6 @@ import { AppRouter } from './app.routes';
 
 export const app = fastify();
 
+//Registre suas rotas aqui!!
 app.register(AppRouter);
 app.register(ExampleRouter);
