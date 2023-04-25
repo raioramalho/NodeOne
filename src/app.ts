@@ -1,6 +1,6 @@
 import fastify from 'fastify';
 import { ExampleRouter } from './modules/example/example.routes';
-import { AppRouter } from './route';
+import { AppRouter } from './app.routes';
 
 export const app = fastify();
 
