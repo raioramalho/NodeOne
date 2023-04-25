@@ -14,12 +14,30 @@ class ExampleController {
 		}
 	}
 
+	async findAll(request: FastifyRequest, response: FastifyReply) {
+		try {
+			return await exampleService.findMany();
+		} catch (error: any) {
+			console.log('🤯 - ', error?.code, error?.message);
+			response.status(error?.code).send({error: error?.message});
+		}
+	}
+
 	async findById(request:  FastifyRequest, response: FastifyReply) {
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		const data: any = request.params;
+		const { id }: any = request.params;
 		try {
-			return await exampleService.findById(data);
+			return await exampleService.findById(id);
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		} catch (error: any) {
+			console.log('🤯 - ', error?.code, error?.message);
+			response.status(error?.code).send({ message: error?.message });
+		}
+	}
+
+	async deleteMany(request: FastifyRequest, response: FastifyReply) {
+		try {
+			return await exampleService.deleteMany();
 		} catch (error: any) {
 			console.log('🤯 - ', error?.code, error?.message);
 			response.status(error?.code).send({ message: error?.message });

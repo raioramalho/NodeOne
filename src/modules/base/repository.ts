@@ -20,7 +20,7 @@ export class Repository{
 		//eslint-disable-next-line @typescript-eslint/ban-ts-comment
 		//@ts-ignore
 		return await prisma[this.model.toLocaleLowerCase()].findUnique({
-			where: +id,
+			where: { id },
 			include: includes,
 		});
 	}

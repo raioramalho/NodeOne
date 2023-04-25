@@ -1,4 +1,4 @@
-import { Example, Prisma, PrismaClient } from '@prisma/client';
+import { Example, PrismaClient } from '@prisma/client';
 import { Repository } from '../base/repository';
 import { errorList } from '../../helpers/errors/list.error';
 import { ResponseError } from '../../helpers/errors/response.error';
@@ -28,10 +28,22 @@ class ExampleService {
 		}
 	}
 
-	async findById(id: number): Promise<any> {
+	async findMany(): Promise<Example[]> {
 		try {
-			const verify = await this.Repository.findById(id);
-			if (verify) {
+			const examples = await this.Repository.findMany();
+			if(!examples) {
+				throw new ResponseError(errorList.Not_Found_Error);
+			}
+			return examples;
+		} catch (error) {
+			throw new ResponseError(error);
+		}
+	}
+
+	async findById(id: number): Promise<Example> {
+		try {
+			const verify = await this.Repository.findById(+id);
+			if (!verify) {
 				throw new ResponseError(errorList.Not_Found_Error);
 			}
 			return verify;
@@ -40,7 +52,19 @@ class ExampleService {
 		}
 	}
 
-	async deleteById(): Promise<Example[]> {
+	async deleteById(id: number): Promise<Example> {
+		try {
+			const remove = await this.Repository.deleteById(+id);
+			if (!remove) {
+				throw new ResponseError(errorList.Not_Found_Error);
+			}
+			return remove;
+		} catch (error) {
+			throw new ResponseError(error);
+		}
+	}
+
+	async deleteMany(): Promise<Example[]> {
 		try {
 			const removelAll = await this.Repository.deleteMany();
 			if (!removelAll) {
