@@ -11,7 +11,7 @@ GET http://localhost:3000/example
 Content-Type: application/json
 
 ### GET to /example/:id
-GET http://localhost:3000/example/4
+GET http://localhost:3000/example/6
 Content-Type: application/json
 
 
