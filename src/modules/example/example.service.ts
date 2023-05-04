@@ -1,20 +1,11 @@
-import { Example, PrismaClient } from '@prisma/client';
+import { Example } from '@prisma/client';
 import { Repository } from '../base/repository';
 import { errorList } from '../../helpers/errors/list.error';
 import { ResponseError } from '../../helpers/errors/response.error';
-
-const prisma = new PrismaClient();
-// Pequeno exemplo de implementação de classe!
-class TestRepository extends Repository {
-	async deleteMany() {
-		//eslint-disable-next-line @typescript-eslint/ban-ts-comment
-		//@ts-ignore
-		return await prisma[this.model.toLocaleLowerCase()].deleteMany();
-	}
-}
+import { ExampleRepository } from './example.repository';
 
 class ExampleService {
-	Repository = new TestRepository('Example');
+	Repository = new ExampleRepository('Example');
 
 	async create(data: any): Promise<Example> {
 		try {
