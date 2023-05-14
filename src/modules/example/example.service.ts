@@ -14,6 +14,9 @@ class ExampleService {
 				throw new ResponseError(errorList.Already_Exists);
 			}
 			const example = await this.Repository.create(data);
+			if (!example) {
+				throw new ResponseError(errorList.Expectation_Failed_Error);
+			}
 			return example;
 		} catch (error) {
 			throw new ResponseError(error);
