@@ -9,7 +9,7 @@ class ErrorList {
 	Already_Exists = {
 		name: 'Already_Exists_Error',
 		code: HttpStatus.CONFLICT,
-		message: 'This account is not avaliable!'
+		message: 'This is not avaliable!'
 	};
 	Not_Found_Error = {
 		name: 'Not_Found_Error',
