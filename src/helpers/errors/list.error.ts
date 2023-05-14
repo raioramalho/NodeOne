@@ -27,6 +27,11 @@ class ErrorList {
 		code: HttpStatus.BAD_REQUEST,
 		message: 'Bad request input!'
 	};
+	Expectation_Failed_Error: IError = {
+		name: 'Expectation_Failed_Error',
+		code: HttpStatus.EXPECTATION_FAILED,
+		message: 'Expectation falied!'
+	};
 }
 
 export const errorList = new ErrorList();
