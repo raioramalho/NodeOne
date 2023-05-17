@@ -59,9 +59,9 @@ class ExampleService {
 		}
 	}
 
-	async deleteMany(): Promise<Example[]> {
+	async deleteOne(id: number): Promise<Example> {
 		try {
-			const removelAll = await this.Repository.deleteMany();
+			const removelAll = await this.Repository.deleteById(id);
 			if (!removelAll) {
 				throw new ResponseError(errorList.Not_Found_Error);
 			}

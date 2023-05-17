@@ -35,9 +35,10 @@ class ExampleController {
 		}
 	}
 
-	async deleteMany(request: FastifyRequest, response: FastifyReply) {
+	async deleteOne(request: FastifyRequest, response: FastifyReply) {
 		try {
-			return await exampleService.deleteMany();
+			const { id }: any = request.params;
+			return await exampleService.deleteOne(+id);
 		} catch (error: any) {
 			console.log('🤯 - ', error?.code, error?.message);
 			response.status(error?.code).send({ message: error?.message });
