@@ -15,7 +15,7 @@ class ErrorList {
 	Already_Exists: IError = {
 		name: 'Already_Exists_Error',
 		code: HttpStatus.CONFLICT,
-		message: 'This is not avaliable!'
+		message: 'Conflict of data!'
 	};
 	Not_Found_Error: IError = {
 		name: 'Not_Found_Error',
