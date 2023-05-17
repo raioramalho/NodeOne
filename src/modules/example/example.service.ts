@@ -1,5 +1,4 @@
 import { Example } from '@prisma/client';
-import { Repository } from '../base/repository';
 import { errorList } from '../../helpers/errors/list.error';
 import { ResponseError } from '../../helpers/errors/response.error';
 import { ExampleRepository } from './example.repository';

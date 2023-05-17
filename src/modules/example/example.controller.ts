@@ -1,6 +1,6 @@
 import { FastifyReply, FastifyRequest } from 'fastify';
 import { exampleService } from './example.service';
-import { CreateExample, ExampleCreateSchema } from './schemas/screate.schema';
+import { ExampleCreateSchema } from './schemas/screate.schema';
 import { HttpStatus } from '@nestjs/common';
 
 class ExampleController {
@@ -8,9 +8,13 @@ class ExampleController {
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		const data = request.body;
 
-		if (!ExampleCreateSchema.parseAsync(data)?.sucess) {
-			response.status(HttpStatus.BAD_REQUEST).send();
+		const check = ExampleCreateSchema.safeParse(data);
+
+		if (!check.success) {
+			const message = JSON.parse(check.error.message)[0];
+			response.status(HttpStatus.BAD_REQUEST).send(message);
 		}
+
 		try {
 			const create = await exampleService.create(data);
 			// eslint-disable-next-line @typescript-eslint/no-explicit-any
