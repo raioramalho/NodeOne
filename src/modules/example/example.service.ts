@@ -3,12 +3,11 @@ import { errorList } from '../../helpers/errors/list.error';
 import { ResponseError } from '../../helpers/errors/response.error';
 import { ExampleRepository } from './example.repository';
 import { hashHelper } from '../../helpers/tools/hash.tool';
-import { CreateExample } from './schemas/screate.schema';
 
 class ExampleService {
 	Repository = new ExampleRepository('Example');
 
-	async create(data: CreateExample): Promise<Example> {
+	async create(data: any): Promise<Example> {
 		try {
 			const verify = await this.Repository.findByEmail(data.email);
 			if (verify) {
@@ -18,9 +17,11 @@ class ExampleService {
 			data.password = await hashHelper.generate(data.password);
 
 			const example = await this.Repository.create(data);
+
 			if (!example) {
 				throw new ResponseError(errorList.Expectation_Failed_Error);
 			}
+
 			return example;
 		} catch (error) {
 			throw new ResponseError(error);

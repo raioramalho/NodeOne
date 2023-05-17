@@ -3,7 +3,8 @@ POST http://localhost:3000/example
 Content-Type: application/json
 
 {
-  "email": "alan.ramalho@gmail.com"
+  "email": "alan.ramalho@gmail.com",
+  "password": "1q2w3e"
 }
 
 ### GET to /example
@@ -11,10 +12,10 @@ GET http://localhost:3000/example
 Content-Type: application/json
 
 ### GET to /example/:id
-GET http://localhost:3000/example/6
+GET http://localhost:3000/example/2
 Content-Type: application/json
 
 
 ### DEL to /example/all
-DELETE http://localhost:3000/example/all
+DELETE http://localhost:3000/example/5
 Content-Type: application/json

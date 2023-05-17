@@ -4,9 +4,9 @@
   "description": "Default Backend prático e completo, com ferramentas e direcionado com ajustes para melhor performace produtividade.",
   "main": "sever.js",
   "scripts": {
-    "prod": "node build/server.js",
+    "prod": "node build/index.js",
     "prod:migrate": "npx prisma migrate deploy",
-    "dev": "tsx watch src/server.ts",
+    "dev": "tsx watch src/index.ts",
     "dev:migrate": "npx prisma migrate dev",
     "test": "vitest run",
     "test:watch": "vitest",
