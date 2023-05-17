@@ -1,12 +1,18 @@
 import { FastifyReply, FastifyRequest } from 'fastify';
 import { exampleService } from './example.service';
+import { CreateExample, ExampleCreateSchema } from './schemas/screate.schema';
+import { HttpStatus } from '@nestjs/common';
 
 class ExampleController {
 	async create(request: FastifyRequest, response: FastifyReply) {
 		// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		const data = request.body;
+
+		if (!ExampleCreateSchema.parseAsync(data)?.sucess) {
+			response.status(HttpStatus.BAD_REQUEST).send();
+		}
 		try {
-			return await exampleService.create(data);
+			const create = await exampleService.create(data);
 			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 		} catch (error: any) {
 			console.log('🤯 - ', error?.code, error?.message);
