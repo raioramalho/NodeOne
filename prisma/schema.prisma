@@ -7,6 +7,12 @@ datasource db {
   url      = "file:./db.sqlite"
 }
 
+model User {
+  id        Int    @id @default(autoincrement())
+  name      String
+  last_name String
+}
+
 model Example {
   id       Int    @id @default(autoincrement())
   email    String @unique
